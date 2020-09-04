@@ -1,0 +1,33 @@
+@import './palette';
+@import "abstracts/variables";
+@import '~@angular/material/theming';
+@import 'custom-theme';
+
+$custom-typography: mat-typography-config($input: mat-typography-level(14px, 1.25, 500));
+@include mat-core($custom-typography);
+
+@mixin scroll-shadow-elevation() {
+  $zIndexes: 24;
+
+  @for $i from 1 through $zIndexes - 1 {
+    .scroll-shadow-elevation-#{$i} {
+      @include mat-elevation-transition;
+      @include mat-elevation($i, #000, 0.4);
+    }
+  }
+}
+
+@mixin custom-components-theme($theme) {
+}
+
+@mixin set-themes($theme) {
+  @include angular-material-theme($theme);
+  @include custom-components-theme($theme);
+}
+
+.custom-theme {
+  @include set-themes($custom-theme);
+}
+
+@include scroll-shadow-elevation();
+

@@ -1,0 +1,5 @@
+$custom-primary: mat-palette($custom-blue, 500);
+$custom-accent: mat-palette($custom-orange, 500, A100, A400);
+$custom-warn: mat-palette($mat-red, 500, A100, A400);
+
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
