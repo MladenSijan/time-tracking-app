@@ -1,0 +1,38 @@
+:host {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  &.hidden {
+    z-index: -1;
+
+    .loader-content {
+      z-index: -1;
+      &::before {
+        z-index: -1;
+      }
+    }
+  }
+}
+
+.loader-content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+  z-index: 1000;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

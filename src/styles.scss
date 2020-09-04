@@ -1,8 +1,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'abstracts/variables';
-@import 'base/reset';
 @import "base/helpers";
-@import 'layout';
+@import 'base/reset';
 @import 'themes/theme';
 @import "overrides/overrides";
 @import "components/components";
