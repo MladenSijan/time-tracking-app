@@ -1,0 +1,15 @@
+<header class="d-flex align-items-baseline justify-content-between mb-3 px-5">
+  <h1>Dashboard</h1>
+  <div class="d-flex align-items-baseline">
+    <app-search (valueChange)="onSearch($event)"></app-search>
+    <app-date-range-picker></app-date-range-picker>
+  </div>
+</header>
+<div class="d-flex justify-content-between px-5">
+  <section class="mat-elevation-z3 section section--summary mr-3">
+    <app-general-summary></app-general-summary>
+  </section>
+  <section class="mat-elevation-z3 section section--employees">
+    <app-employees-container></app-employees-container>
+  </section>
+</div>

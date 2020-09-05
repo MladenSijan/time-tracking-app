@@ -1,0 +1,29 @@
+<ng-container *ngIf="employees">
+  <mat-table class="dc-table-content" [dataSource]="[]">
+    <ng-container matColumnDef="name">
+      <mat-header-cell class="cell cell--name" *matHeaderCellDef>
+        Name
+      </mat-header-cell>
+      <mat-cell class="cell cell--name" *matCellDef="let data">
+
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell class="header-cell dc-table__cell--actions" *matHeaderCellDef>
+        Actions
+      </mat-header-cell>
+      <mat-cell class="cell cell--actions justify-content-center" *matCellDef="let data">
+        <button mat-button (click)="onRowSelect()">
+          View
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row class="row row--header"
+                    *matHeaderRowDef="displayedColumns">
+    </mat-header-row>
+    <mat-row class="row row--hover dc-table__row--even-odd"
+             [class.row--suspended]="false"
+             *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+</ng-container>

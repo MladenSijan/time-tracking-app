@@ -1,0 +1,10 @@
+<div>
+  <h1 class="title mb-3">Employee overview</h1>
+  <div *ngIf="employees.employeeInfo">
+    <app-employee-info [employee]="employees.employeeInfo"></app-employee-info>
+    <mat-slide-toggle [checked]="employees.employeeInfo.active" (change)="onToggleStatus($event)">
+      {{employees.employeeInfo.active ? 'Active' : 'Inactive'}}
+    </mat-slide-toggle>
+  </div>
+  <app-activity-graph [data]="null"></app-activity-graph>
+</div>

@@ -1,0 +1,13 @@
+<div class="search-control">
+  <mat-form-field>
+    <button mat-icon-button matPrefix>
+      <mat-icon>search</mat-icon>
+    </button>
+    <input #searchInput matInput [formControl]="searchControl"
+           type="text" placeholder="Search employees" spellcheck="false">
+    <button mat-icon-button matSuffix
+            (click)="onReset()">
+      <mat-icon>{{searchControl.value.length > 0 ? 'close' : ''}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
