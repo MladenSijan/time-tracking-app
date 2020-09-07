@@ -1,7 +1,6 @@
 <div *ngIf="loader.loading$ | async" @fade>
   <ng-container #loaderOutlet *ngTemplateOutlet="chosenTemplate"></ng-container>
 </div>
-
 <ng-template #defaultPreset>
   <div class="loader-content">
     <mat-spinner class="loader" [diameter]="35" [strokeWidth]="3"></mat-spinner>

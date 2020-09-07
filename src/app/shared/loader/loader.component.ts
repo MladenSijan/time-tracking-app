@@ -25,7 +25,7 @@ import {LoaderService} from './loader.service';
   ]
 })
 export class LoaderComponent implements OnInit, AfterContentInit, OnDestroy {
-  @ViewChild('defaultPreset') defaultPreset: TemplateRef<any>;
+  @ViewChild('defaultPreset', {static: true}) defaultPreset: TemplateRef<any>;
   @ViewChild('loaderOutlet', {read: ViewContainerRef}) loaderOutlet: ViewContainerRef;
 
   zIndex = 1000;

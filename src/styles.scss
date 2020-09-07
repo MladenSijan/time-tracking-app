@@ -17,17 +17,21 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100vh;
+}
+
 html, body {
   padding: 0;
   margin: 0 0;
   width: 100%;
   border: none;
-  height: 100%;
   font-size: 100%;
   vertical-align: baseline;
 }
 
 body {
+  height: 100%;
   overscroll-behavior: none;
 }
 
@@ -43,3 +47,14 @@ body {
 button:focus {
   outline: none;
 }
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+

@@ -4,11 +4,11 @@
   </h3>
 
   <ng-container *ngIf="summary">
-    <div>
+    <div class="content px-3">
       <div class="mb-2"><strong>Total number of employees</strong>: {{summary.total}}</div>
-      <div class="mb-2"><strong>Clocked in time</strong>: {{summary.clockedInTime}}</div>
-      <div class="mb-2"><strong>Productive time</strong>: {{summary.productiveTime}}</div>
-      <div class="mb-2"><strong>Unproductive time</strong>: {{summary.unproductiveTime}}</div>
+      <div class="mb-2"><strong>Clocked in time</strong>: {{summary.clockedInTime}}h</div>
+      <div class="mb-2"><strong>Productive time</strong>: {{summary.productiveTime}}h</div>
+      <div class="mb-2"><strong>Unproductive time</strong>: {{summary.unproductiveTime}}h</div>
     </div>
   </ng-container>
 </section>

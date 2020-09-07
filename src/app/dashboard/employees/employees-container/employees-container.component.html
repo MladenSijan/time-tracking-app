@@ -1,4 +1,4 @@
 <div style="position: relative;">
-  <app-paginator [config]="employees.filterParams"></app-paginator>
-  <app-employees-table [employees]="[]"></app-employees-table>
+  <app-paginator [config]="employees.paginatorConfig" (pageChange)="onPageChange($event)"></app-paginator>
+  <app-employees-table [employees]="(employees.employees$ | async)"></app-employees-table>
 </div>

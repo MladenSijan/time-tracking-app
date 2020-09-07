@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Employee} from '../../../models/employee';
 import {Router} from '@angular/router';
 
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./employees-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeesTableComponent implements OnInit {
+export class EmployeesTableComponent {
   displayedColumns = ['name', 'actions'];
   @Input() employees: Employee[] = null;
 
@@ -17,10 +17,7 @@ export class EmployeesTableComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-  }
-
   onRowSelect(): void {
-    this.router.navigate([]);
+    this.router.navigate(['employee', 1]);
   }
 }

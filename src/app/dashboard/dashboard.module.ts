@@ -5,8 +5,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {APP_DATE_FORMATS, MaterialDateAdapter} from '../helpers';
+import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
 
 import {SharedModule} from '../shared/shared.module';
 import {EmployeesModule} from './employees/employees.module';
@@ -32,14 +36,23 @@ import {DateRangePickerComponent} from './dashboard/date-range-picker/date-range
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatNativeDateModule,
 
     SharedModule,
     EmployeesModule,
     DashboardServiceModule,
     DashboardRoutingModule,
+  ],
+  providers: [
+    {provide: DateAdapter, useClass: MaterialDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
   ]
 })
 export class DashboardModule {
+  constructor(private dateAdapter: DateAdapter<Date>) {
+  }
 }

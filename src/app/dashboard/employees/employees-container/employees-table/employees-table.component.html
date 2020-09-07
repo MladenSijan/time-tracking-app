@@ -1,11 +1,11 @@
 <ng-container *ngIf="employees">
-  <mat-table class="dc-table-content" [dataSource]="[]">
+  <mat-table class="table" [dataSource]="employees">
     <ng-container matColumnDef="name">
       <mat-header-cell class="cell cell--name" *matHeaderCellDef>
         Name
       </mat-header-cell>
       <mat-cell class="cell cell--name" *matCellDef="let data">
-
+        {{data.active ? 'active' : 'inactive'}} {{data.activities | json}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
@@ -19,7 +19,7 @@
       </mat-cell>
     </ng-container>
     <mat-header-row class="row row--header"
-                    *matHeaderRowDef="displayedColumns">
+                    *matHeaderRowDef="displayedColumns; sticky: true">
     </mat-header-row>
     <mat-row class="row row--hover dc-table__row--even-odd"
              [class.row--suspended]="false"

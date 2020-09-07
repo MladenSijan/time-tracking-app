@@ -1,5 +1,11 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
+export interface PaginatorConfig {
+  size: number;
+  index: number;
+  length: number;
+}
+
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
@@ -7,20 +13,19 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatorComponent {
-  @Output() pageChange = new EventEmitter<number>();
-  config: any = {
-    length: 0,
+  config: PaginatorConfig = {
     size: 0,
-    index: 0
+    index: 0,
+    length: 0
   };
+  @Output() pageChange = new EventEmitter<number>();
 
   @Input('config') set configSetter(config: any) {
     const {length, size, index} = config;
-    this.config = {...length, size, index};
+    this.config = {...this.config, length, size, index};
   }
 
   onChange(e): void {
-    console.log(e);
-    this.pageChange.emit(e);
+    this.pageChange.emit(e.pageIndex);
   }
 }

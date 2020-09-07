@@ -1,1 +1,48 @@
-<p>date-range-picker works!</p>
+<div class="date-range-wrapper">
+  <div [formGroup]="dateRangeForm" class="range-picker">
+    <mat-icon class="icon" matTooltip="Choose range">date_range</mat-icon>
+    <mat-form-field class="date-picker"
+                    (click)="startDate.open()"
+                    [class.date-picker-open]="startDate.opened"
+                    [style.margin-right.rem]="hasTimePicker ? 0.5 : 0">
+      <input class="date-picker-input"
+             formControlName="startDate"
+             [matDatepicker]="startDate"
+             [max]="maxDate" [min]="minDate"
+             (dateChange)="setRange()" matInput readonly>
+      <mat-datepicker color="primary" #startDate="matDatepicker"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width: 55px" *ngIf="hasTimePicker">
+      <mat-select formControlName="startTime"
+                  (selectionChange)="setRange()"
+                  [value]="dateRangeForm.get('startTime').value">
+        <mat-option *ngFor="let hour of startHours; let i = index" [value]="hour">
+          {{hour}} {{i < 12 ? 'am' : 'pm'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="dash" [style.margin]="hasTimePicker ? '0 1rem' : '0'">–</div>
+
+    <mat-form-field style="width: 55px" *ngIf="hasTimePicker">
+      <mat-select formControlName="endTime"
+                  (selectionChange)="setRange()"
+                  [value]="dateRangeForm.get('endTime').value">
+        <mat-option *ngFor="let hour of endHours; let i = index" [value]="hour">
+          {{hour}} {{i < 12 ? 'am' : 'pm'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="date-picker"
+                    (click)="endDate.open()"
+                    [class.date-picker-open]="endDate.opened"
+                    [style.margin-left.rem]="hasTimePicker ? 0.5 : 0">
+      <input class="date-picker-input"
+             formControlName="endDate"
+             [matDatepicker]="endDate"
+             [max]="maxDate" [min]="minDateTo"
+             (dateChange)="setRange()" matInput readonly>
+      <mat-datepicker color="primary" #endDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

@@ -5,30 +5,39 @@ import {Employee} from '../models/employee';
 import {RequestsService} from '../../shared/requests.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {HttpClient} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
+import {PaginatorConfig} from './employees-container/paginator/paginator.component';
+import {shareReplay, tap} from 'rxjs/operators';
 
 export interface FilterParams {
-  active?: boolean;
-  from?: string;
   to?: string;
-  searchTerm?: string;
-  page?: number;
+  from?: string;
+  limit?: number;
   offset?: number;
-  pageSize?: number;
+  active?: boolean;
+  searchTerm?: string;
 }
 
 @Injectable({providedIn: DashboardServiceModule})
 export class EmployeesService {
-  employees: Employee[] = null;
+  private employees: Employee[] = null;
   employeeInfo: Employee = null;
 
+  employees$ = new Subject<Employee[]>();
+
+  paginatorConfig: PaginatorConfig = {
+    size: 0,
+    index: 0,
+    length: 0
+  };
+
   filterParams: FilterParams = {
-    active: true,
-    from: '2020-09-01 ',
-    to: '2020-09-05 ',
-    searchTerm: '',
-    page: 0,
+    limit: 20,
     offset: 0,
-    pageSize: 5
+    active: true,
+    searchTerm: '',
+    to: '2020-09-05 ',
+    from: '2020-09-01 '
   };
 
   constructor(
@@ -39,50 +48,79 @@ export class EmployeesService {
   ) {
   }
 
-  public getEmployees(): Promise<any> {
-    return this.http.get('/assets/generated.json').toPromise()
-      .then((res: any[]) => {
-
-        // adapt data
-      });
+  private onChange(): void {
+    this.loader.loading$.next(true);
+    this.employees$.next(this._filter(this.employees || []));
+    this.loader.loading$.next(false);
   }
 
-  async setFilterParams(params: any): Promise<FilterParams> {
-    this.filterParams = {...this.filterParams, ...{}};
-    return this.filterParams;
+  private setEmployees(res): void {
+    this.employees = res.map((emp: any) => ({
+      ...emp,
+      active: Math.random() > 0.5,
+    }));
+
+    this.employees$.next(this._filter(this.employees));
   }
 
-  updateFilterParams(params: any): void {
+  public requestForEmployees(): Observable<any> {
+    this.loader.loading$.next(true);
+    return this.http.get('/assets/generated.json')
+      .pipe(shareReplay(), tap(res => this.setEmployees(res)));
+  }
+
+  public updateFilterParams(params: any): void {
     this.filterParams = {...this.filterParams, ...params};
-    this.getEmployees();
+    this.onChange();
   }
 
   public changeStatus(active: boolean): void {
-    this.requestForUpdate({...this.employeeInfo, active});
+    this._requestForUpdate({...this.employeeInfo, active});
   }
 
-  private requestForUpdate(employee: Employee): void {
+  private _requestForUpdate(employee: Employee): void {
     this.requests.updateData(`/users/${employee.id}`, employee).toPromise()
       .then(res => {
         this.employeeInfo = {...employee};
-        this.showInfo('update successful');
+        this._showInfo('Update successful');
       })
-      .catch(err => this.showInfo('update failed: ' + err));
-  }
-
-  showInfo(message: string): void {
-    this.snackbar.open(message, null, {duration: 1500});
+      .catch(err => this._showInfo('Update failed: ' + err));
   }
 
   private _filter(res: Employee[]): Employee[] {
-    let data = res;
+    let data: any = res;
 
-    if (this.filterParams.searchTerm.length > 0) {
-      data = data.filter(option => option.name.toLowerCase().includes(this.filterParams.searchTerm));
+    const shouldIncludeSearch = this.filterParams.searchTerm.length > 0;
+
+    if (shouldIncludeSearch) {
+      data = data.filter(option => {
+        return (this.filterParams.active === option.active) && option.guid.toLowerCase().includes(this.filterParams.searchTerm);
+      });
+    } else {
+      data = data.filter(option => {
+        const inRange = true;
+        return (this.filterParams.active === option.active) && inRange;
+      });
     }
 
-    data.slice(this.filterParams.offset, this.filterParams.page * this.filterParams.pageSize + 1);
+    const total = data.length;
+    const size = total < this.filterParams.limit ? total : this.filterParams.limit;
 
-    return data;
+    this.paginatorConfig = {
+      ...this.paginatorConfig,
+      size,
+      length: total,
+      index: this.filterParams.offset / this.filterParams.limit,
+    };
+
+    const modifiedData: any[] = data.slice(this.filterParams.offset, this.filterParams.offset + size + 1);
+    return modifiedData.map((emp: any, i) => ({
+      ...emp,
+      activities: [`${emp.guid.slice(0, 4)}-1`, `${emp.guid.slice(0, 4)}-2`, `${emp.guid.slice(0, 4)}-3`]
+    }));
+  }
+
+  private _showInfo(message: string): void {
+    this.snackbar.open(message, null, {duration: 1500});
   }
 }

@@ -1,12 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<boolean>();
@@ -18,10 +17,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dashboard.getSummary();
-
-    this.dashboard.filterChange$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(filter => this.dashboard.applyFilter(filter));
   }
 
   ngOnDestroy(): void {
@@ -29,20 +24,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
-  onDateChange(range) {
+  onDateChange(range): void {
     const {from, to} = range;
     this.dashboard.updateFilter({from, to});
-  }
-
-  onPageChange(page: number, offset) {
-    this.dashboard.updateFilter({page, offset});
   }
 
   onSearch(searchTerm: string): void {
     this.dashboard.updateFilter({searchTerm});
   }
 
-  onStatusChange(active: boolean) {
+  onStatusChange(active: boolean): void {
     this.dashboard.updateFilter({active});
   }
 }
