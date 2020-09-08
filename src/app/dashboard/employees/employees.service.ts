@@ -61,9 +61,7 @@ export class EmployeesService {
   }
 
   private onChange(): void {
-    this.loader.loading$.next(true);
     this.employees$.next(this._filter(this.employees || []));
-    this.loader.loading$.next(false);
   }
 
   public getAll(): Promise<any> {

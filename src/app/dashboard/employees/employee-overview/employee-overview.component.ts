@@ -43,8 +43,21 @@ export class EmployeeOverviewComponent implements OnInit {
 
   }
 
-  onClockedInChange(e: MatSelectChange) {
+  onClockedInChange(e) {
+    console.log(e);
     this.activityForm.enable();
+  }
+
+  onClockedInSet(e) {
+    console.log(e);
+  }
+
+  onClockedOutSet(e) {
+
+  }
+
+  onClockedOutChange(e) {
+    console.log(e);
   }
 
   onProductiveChange(e: MatSelectChange) {

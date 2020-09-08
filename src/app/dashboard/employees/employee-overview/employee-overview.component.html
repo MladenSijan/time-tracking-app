@@ -5,7 +5,7 @@
       <div class="d-flex flex-column align-items-start justify-content-start mr-5" style="min-width: 500px">
         <div class="card p-3 w-100 mb-5" style="min-width: 350px;">
           <div class="d-flex align-items-baseline justify-content-between">
-            <h2>{{employees.employeeInfo.name}}</h2>
+            <h2 class="mb-4">{{employees.employeeInfo.name}}</h2>
             <mat-slide-toggle [checked]="employees.employeeInfo?.active" (change)="onToggleStatus($event)">
               {{employees.employeeInfo?.active ? 'Active' : 'Inactive'}}
             </mat-slide-toggle>
@@ -13,8 +13,8 @@
           <app-employee-info class="mr-3" [employee]="employees.employeeInfo"></app-employee-info>
         </div>
         <div class="card p-3 w-100" style="width: 350px;">
-          <h3 class="mb-2">Add activity</h3>
-          <div class="d-flex flex-column" [formGroup]="activityForm">
+          <h3 class="card-title mb-2">Add activity</h3>
+          <section class="d-flex flex-column" [formGroup]="activityForm">
             <div>
               <mat-form-field class="date-picker" (click)="picker.open()">
                 <button class="mr-2" mat-icon-button matPrefix matTooltip="Choose date">
@@ -28,18 +28,33 @@
               </mat-form-field>
             </div>
             <div class="d-flex justify-content-between">
-              <mat-form-field floatLabel="always">
-                <mat-select formControlName="clockedIn"
-                            placeholder="Clocked in time"
-                            (valueChange)="onClockedInChange($event)">
-                  <mat-option [value]="hour" *ngFor="let hour of totalHoursProductive">{{hour}}h</mat-option>
-                </mat-select>
+              <mat-form-field class="time-picker">
+                <input [ngxTimepicker]="toggleIconIn" placeholder="Clocked in time" readonly matInput>
+                <ngx-material-timepicker-toggle [for]="toggleIconIn" matSuffix>
+                  <button ngxMaterialTimepickerToggleIcon
+                          mat-icon-button matTooltip="Pick a time">
+                    <mat-icon>query_builder</mat-icon>
+                  </button>
+                </ngx-material-timepicker-toggle>
               </mat-form-field>
-              <mat-form-field floatLabel="always">
-                <mat-select formControlName="clockedOut" placeholder="Clocked out time">
-                  <mat-option></mat-option>
-                </mat-select>
+              <ngx-material-timepicker (timeSet)="onClockedInSet($event)"
+                                       (hourSelected)="onClockedInChange($event)"
+                                       #toggleIconIn style="position: absolute;">
+              </ngx-material-timepicker>
+
+              <mat-form-field class="time-picker">
+                <input [ngxTimepicker]="toggleIconOut" placeholder="Clocked out time" readonly matInput>
+                <ngx-material-timepicker-toggle [for]="toggleIconOut" matSuffix>
+                  <button ngxMaterialTimepickerToggleIcon
+                          mat-icon-button matTooltip="Pick a time">
+                    <mat-icon>query_builder</mat-icon>
+                  </button>
+                </ngx-material-timepicker-toggle>
               </mat-form-field>
+              <ngx-material-timepicker (timeSet)="onClockedOutSet($event)"
+                                       (hourSelected)="onClockedOutChange($event)"
+                                       #toggleIconOut style="position: absolute;">
+              </ngx-material-timepicker>
             </div>
             <div class="d-flex justify-content-between">
               <mat-form-field floatLabel="always">
@@ -59,7 +74,7 @@
               <button class="mr-2" mat-button *ngIf="activityForm.value" (click)="onReset()">Reset</button>
               <button mat-stroked-button color="accent" (click)="onAddTrack()">Add new</button>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </ng-container>

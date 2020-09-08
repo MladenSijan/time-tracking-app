@@ -26,6 +26,7 @@
     "moment": "^2.27.0",
     "ng2-charts": "^2.4.0",
     "ngx-indexed-db": "^6.0.2",
+    "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

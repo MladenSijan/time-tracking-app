@@ -1,12 +1,13 @@
 @import './palette';
 @import '~@angular/material/theming';
 @import 'custom-theme';
+@import '../../app/dashboard/dashboard/dashboard.theme';
 
 $custom-typography: mat-typography-config($input: mat-typography-level(14px, 1.25, 500));
 @include mat-core($custom-typography);
 
 @mixin custom-components-theme($theme) {
-
+  @include dashboard-theme($theme);
 }
 
 @mixin set-themes($theme) {

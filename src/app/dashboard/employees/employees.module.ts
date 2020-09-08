@@ -15,6 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import {SharedModule} from '../../shared/shared.module';
 
@@ -53,6 +54,7 @@ import {EmployeesTableComponent} from './employees-container/employees-table/emp
     MatPaginatorModule,
     MatDatepickerModule,
     MatSlideToggleModule,
+    NgxMaterialTimepickerModule
   ],
   exports: [
     EmployeesContainerComponent

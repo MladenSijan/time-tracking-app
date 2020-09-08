@@ -6,7 +6,8 @@
 mat-form-field {
   width: 40%;
 
-  &.date-picker {
+  &.date-picker ,
+  &.time-picker {
     input {
       &:hover {
         cursor: pointer;
