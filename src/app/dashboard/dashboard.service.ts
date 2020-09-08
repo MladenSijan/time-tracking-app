@@ -1,16 +1,21 @@
 import {Injectable} from '@angular/core';
-import {DashboardServiceModule} from './dashboard-service.module';
 import {LoaderService} from '../shared/loader/loader.service';
 import {EmployeesService, FilterParams} from './employees/employees.service';
 import {Employee} from './models/employee';
 import {Summary} from './models/summary';
 import {productiveTimeReducer, totalClockedInTimeReducer, unproductiveTimeReducer} from '../helpers';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {DashboardServiceModule} from './dashboard-service.module';
+
+const baseUrl = `${environment.apiUrl}/users`;
 
 @Injectable({providedIn: DashboardServiceModule})
 export class DashboardService {
   summaryInfo: Summary = null;
 
   constructor(
+    private http: HttpClient,
     private loader: LoaderService,
     private employees: EmployeesService,
   ) {
@@ -21,10 +26,10 @@ export class DashboardService {
 
     this.employees.getAll()
       .then(data => {
-        this.employees.setEmployees(data[0]);
-        this.setSummaryInfo(data[0] || []);
-        this.loader.loading$.next(false);
-      });
+        this.employees.setEmployees(data);
+        this.setSummaryInfo(data || []);
+      })
+      .finally(() => this.loader.loading$.next(false));
   }
 
   private setSummaryInfo(employees: Employee[]): void {
@@ -38,5 +43,18 @@ export class DashboardService {
 
   public updateFilter(params: FilterParams): void {
     this.employees.updateFilterParams(params);
+  }
+
+  private _requestForEmployees(): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.get(baseUrl, {withCredentials: true}).toPromise()
+        .then(res => {
+          console.log('success', res);
+          resolve(res);
+        })
+        .catch(err => {
+          console.log('req err', err);
+        });
+    });
   }
 }

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, SkipSelf} from '@angular/core';
 import {LoaderService} from '../../shared/loader/loader.service';
 import {DashboardServiceModule} from '../dashboard-service.module';
 import {Employee} from '../models/employee';
@@ -8,6 +8,7 @@ import {Subject} from 'rxjs';
 import {PaginatorConfig} from './employees-container/paginator/paginator.component';
 import {NgxIndexedDBService} from 'ngx-indexed-db';
 import {RequestsService} from '../../services';
+import {environment} from '../../../environments/environment';
 
 export interface FilterParams {
   to?: string;
@@ -17,6 +18,8 @@ export interface FilterParams {
   active?: boolean;
   searchTerm?: string;
 }
+
+const baseUrl = `${environment.apiUrl}/users`;
 
 @Injectable({providedIn: DashboardServiceModule})
 export class EmployeesService {
@@ -72,15 +75,10 @@ export class EmployeesService {
   }
 
   private _requestForEmployees(): Promise<any> {
-    return new Promise((resolve) => {
-      this.http.get('/users').toPromise()
-        .then(res => {
-          console.log('success', res);
-          resolve(res);
-        })
-        .catch(err => {
-          console.log('req err', err);
-        });
+    return new Promise((resolve, reject) => {
+      this.http.get(baseUrl, {withCredentials: true}).toPromise()
+        .then(res => resolve(res))
+        .catch(err => reject(err));
     });
   }
 

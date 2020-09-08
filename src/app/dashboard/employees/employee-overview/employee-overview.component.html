@@ -1,9 +1,9 @@
 <div class="px-5">
   <h1 class="title mb-3">Employee overview</h1>
-  <div class="d-flex align-items-start mb-5">
+  <div class="d-flex align-items-end justify-content-start">
     <ng-container *ngIf="employees.employeeInfo">
-      <div class="w-50 d-flex align-items-start justify-content-start">
-        <div class="card p-3 w-50 mr-5">
+      <div class="d-flex flex-column align-items-start justify-content-start mr-5" style="min-width: 500px">
+        <div class="card p-3 w-100 mb-5" style="min-width: 350px;">
           <div class="d-flex align-items-baseline justify-content-between">
             <h2>{{employees.employeeInfo.name}}</h2>
             <mat-slide-toggle [checked]="employees.employeeInfo?.active" (change)="onToggleStatus($event)">
@@ -12,13 +12,61 @@
           </div>
           <app-employee-info class="mr-3" [employee]="employees.employeeInfo"></app-employee-info>
         </div>
-        <div class="card p-3 w-50">
-          card
+        <div class="card p-3 w-100" style="width: 350px;">
+          <h3 class="mb-2">Add activity</h3>
+          <div class="d-flex flex-column" [formGroup]="activityForm">
+            <div>
+              <mat-form-field class="date-picker" (click)="picker.open()">
+                <button class="mr-2" mat-icon-button matPrefix matTooltip="Choose date">
+                  <mat-icon>calendar_today</mat-icon>
+                </button>
+                <input class="date-picker-input"
+                       formControlName="date"
+                       [matDatepicker]="picker"
+                       (dateChange)="onDateChange($event)" matInput readonly>
+                <mat-datepicker color="primary" #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-between">
+              <mat-form-field floatLabel="always">
+                <mat-select formControlName="clockedIn"
+                            placeholder="Clocked in time"
+                            (valueChange)="onClockedInChange($event)">
+                  <mat-option [value]="hour" *ngFor="let hour of totalHoursProductive">{{hour}}h</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field floatLabel="always">
+                <mat-select formControlName="clockedOut" placeholder="Clocked out time">
+                  <mat-option></mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-between">
+              <mat-form-field floatLabel="always">
+                <mat-select formControlName="productiveTime"
+                            placeholder="Productive time"
+                            (valueChange)="onProductiveChange($event)">
+                  <mat-option [value]="hour" *ngFor="let hour of totalHoursProductive">{{hour}}h</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field floatLabel="always">
+                <mat-select formControlName="unproductiveTime" placeholder="Unproductive time">
+                  <mat-option [value]="hour" *ngFor="let hour of totalHoursUnproductive">{{hour}}h</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="mt-3 text-right">
+              <button class="mr-2" mat-button *ngIf="activityForm.value" (click)="onReset()">Reset</button>
+              <button mat-stroked-button color="accent" (click)="onAddTrack()">Add new</button>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>
-  </div>
-  <div class="card p-3" style="width: 50%;">
-    <app-activity-graph [data]="null"></app-activity-graph>
+    <div class="d-flex justify-content-center">
+      <div class="card p-3" style="min-width: 750px; width: 70%;">
+        <app-activity-graph [data]="null"></app-activity-graph>
+      </div>
+    </div>
   </div>
 </div>

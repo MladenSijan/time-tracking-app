@@ -2,3 +2,19 @@
   margin-bottom: 0;
   line-height: 60px;
 }
+
+mat-form-field {
+  width: 40%;
+
+  &.date-picker {
+    input {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

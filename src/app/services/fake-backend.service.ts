@@ -5,10 +5,10 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HTTP_INTERCEPTORS,
+  HTTP_INTERCEPTORS, HttpClient,
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
-import {delay, materialize, dematerialize} from 'rxjs/operators';
+import {delay, materialize, dematerialize, mergeMap} from 'rxjs/operators';
 
 import {AlertService, DatabaseService} from './index';
 import {Role} from '../models';
@@ -19,6 +19,7 @@ const accounts = JSON.parse(localStorage.getItem(accountsKey)) || [];
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
   constructor(
+    private http: HttpClient,
     private db: DatabaseService,
     private alertService: AlertService
   ) {
@@ -28,6 +29,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     const {url, method, headers, body} = request;
     const alertService = this.alertService;
     const db = this.db;
+    const http = this.http;
 
     return handleRoute();
 
@@ -232,24 +234,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return unauthorized();
       }
 
-      db.getAll('employees').toPromise()
-        .then((res: any) => {
-          if (res.length === 0) {
-            let employees: any[] = [];
-
-            this.http.get('/assets/generated.json').toPromise()
-              .then((data: any) => {
-                employees = data;
-                return db.add('employees', employees).toPromise();
-              }).catch(err => error('json file error:' + err))
-              .then(() => ok(employees));
-          } else {
-            return ok(res);
-          }
-        })
-        .catch(err => {
-          error('db error:' + err);
-        });
+      // request = request.clone({body: {data: res}});
+      return db.getAll('employees').pipe(mergeMap(res => ok(res)));
     }
 
     // helper functions

@@ -16,9 +16,11 @@ import {NotFoundComponent} from '../shared/not-found/not-found.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
+
     MatIconModule,
     MatButtonModule,
+
+    SharedModule,
   ]
 })
 export class CoreModule {

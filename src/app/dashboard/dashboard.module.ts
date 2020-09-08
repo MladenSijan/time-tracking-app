@@ -49,7 +49,7 @@ import {DateRangePickerComponent} from './dashboard/date-range-picker/date-range
   ],
   providers: [
     {provide: DateAdapter, useClass: MaterialDateAdapter},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
   ]
 })
 export class DashboardModule {
