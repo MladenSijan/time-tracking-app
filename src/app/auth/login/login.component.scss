@@ -12,14 +12,18 @@
 
     width: 380px;
     padding: 2rem;
-    border-radius: 7px;
 
     mat-form-field {
       width: 250px;
     }
 
-    button {
-      width: 180px;
+    footer {
+      width: 240px;
+      text-align: center;
+
+      button {
+        width: 180px;
+      }
     }
   }
 }

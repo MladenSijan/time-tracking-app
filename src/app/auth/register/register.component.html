@@ -1,18 +1,21 @@
-<div>
-  <div class="mb-3">
-    <mat-form-field class="mb-2">
-      <input matInput placeholder="email">
+<div class="wrapper">
+  <div class="card mb-3" [formGroup]="register">
+    <div class="mb-5">
+      <img src="/assets/img/logo.svg" alt="logo"> Time tracker
+    </div>
+    <mat-form-field class="mb-3">
+      <input matInput formControlName="email" placeholder="Email" type="email" spellcheck="false">
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="password">
+    <mat-form-field class="mb-3">
+      <input matInput formControlName="password" placeholder="Password" spellcheck="false">
     </mat-form-field>
-  </div>
-
-  <div>
-    <button mat-flat-button
-            (click)="onSubmit()">
-      Submit
-    </button>
+    <footer>
+      <div class="mb-5 text-right">
+        <a routerLink="/login">Login</a>
+      </div>
+      <button mat-stroked-button color="accent" (click)="onSubmit()">
+        Register
+      </button>
+    </footer>
   </div>
 </div>

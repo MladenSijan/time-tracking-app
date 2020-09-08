@@ -19,7 +19,7 @@ export class ActivityGraphComponent implements OnInit {
       xAxes: [
         {
           type: 'time',
-          time: {
+          ticks: {
             min: '2020-09-01',
             max: '2020-09-26'
           }

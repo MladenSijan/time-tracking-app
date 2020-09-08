@@ -2,11 +2,23 @@
   <h1 class="title mb-3">Employee overview</h1>
   <div class="d-flex align-items-start mb-5">
     <ng-container *ngIf="employees.employeeInfo">
-      <app-employee-info class="mr-3" [employee]="employees.employeeInfo"></app-employee-info>
+      <div class="w-50 d-flex align-items-start justify-content-start">
+        <div class="card p-3 w-50 mr-5">
+          <div class="d-flex align-items-baseline justify-content-between">
+            <h2>{{employees.employeeInfo.name}}</h2>
+            <mat-slide-toggle [checked]="employees.employeeInfo?.active" (change)="onToggleStatus($event)">
+              {{employees.employeeInfo?.active ? 'Active' : 'Inactive'}}
+            </mat-slide-toggle>
+          </div>
+          <app-employee-info class="mr-3" [employee]="employees.employeeInfo"></app-employee-info>
+        </div>
+        <div class="card p-3 w-50">
+          card
+        </div>
+      </div>
     </ng-container>
-    <mat-slide-toggle [checked]="employees.employeeInfo?.active" (change)="onToggleStatus($event)">
-      {{employees.employeeInfo?.active ? 'Active' : 'Inactive'}}
-    </mat-slide-toggle>
   </div>
-  <app-activity-graph [data]="null"></app-activity-graph>
+  <div class="card p-3" style="width: 50%;">
+    <app-activity-graph [data]="null"></app-activity-graph>
+  </div>
 </div>

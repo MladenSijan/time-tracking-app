@@ -1,9 +1,8 @@
 <ng-container *ngIf="employee">
-  <div>
-    <div>{{employee.name}}</div>
-    <div>
-
-    </div>
+  <div class="content">
+    <div class="mb-2"><strong>Total clocked in time</strong>: {{employee.totalClockedInTime}}h</div>
+    <div class="mb-2"><strong>Total productive time</strong>: {{employee.totalProductiveTime}}h</div>
+    <div class="mb-2"><strong>Total unproductive time</strong>: {{employee.totalUnproductiveTime}}h</div>
+    <div><strong>Productivity ratio</strong>: {{employee.productivityRatio}}</div>
   </div>
-
 </ng-container>

@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {LoaderService} from '../../shared/loader/loader.service';
 import {DashboardServiceModule} from '../dashboard-service.module';
 import {Employee} from '../models/employee';
-import {RequestsService} from '../../shared/requests.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {HttpClient} from '@angular/common/http';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {PaginatorConfig} from './employees-container/paginator/paginator.component';
-import {shareReplay, tap} from 'rxjs/operators';
+import {NgxIndexedDBService} from 'ngx-indexed-db';
+import {RequestsService} from '../../services';
 
 export interface FilterParams {
   to?: string;
@@ -21,7 +21,15 @@ export interface FilterParams {
 @Injectable({providedIn: DashboardServiceModule})
 export class EmployeesService {
   private employees: Employee[] = null;
-  employeeInfo: Employee = null;
+  employeeInfo: Employee = {
+    totalClockedInTime: 2,
+    totalUnproductiveTime: 2,
+    active: true,
+    id: 'u2313',
+    name: 'Client name',
+    productivityRatio: 0.4,
+    totalProductiveTime: 2
+  };
 
   employees$ = new Subject<Employee[]>();
 
@@ -32,7 +40,7 @@ export class EmployeesService {
   };
 
   filterParams: FilterParams = {
-    limit: 20,
+    limit: 50,
     offset: 0,
     active: true,
     searchTerm: '',
@@ -41,6 +49,7 @@ export class EmployeesService {
   };
 
   constructor(
+    private db: NgxIndexedDBService,
     private http: HttpClient,
     private loader: LoaderService,
     private snackbar: MatSnackBar,
@@ -54,19 +63,33 @@ export class EmployeesService {
     this.loader.loading$.next(false);
   }
 
-  private setEmployees(res): void {
+  public getAll(): Promise<any> {
+    return this._requestForEmployees();
+  }
+
+  public getSingle(): Promise<any> {
+    return this._requestForEmployees();
+  }
+
+  private _requestForEmployees(): Promise<any> {
+    return new Promise((resolve) => {
+      this.http.get('/users').toPromise()
+        .then(res => {
+          console.log('success', res);
+          resolve(res);
+        })
+        .catch(err => {
+          console.log('req err', err);
+        });
+    });
+  }
+
+  public setEmployees(res): void {
     this.employees = res.map((emp: any) => ({
       ...emp,
       active: Math.random() > 0.5,
     }));
-
     this.employees$.next(this._filter(this.employees));
-  }
-
-  public requestForEmployees(): Observable<any> {
-    this.loader.loading$.next(true);
-    return this.http.get('/assets/generated.json')
-      .pipe(shareReplay(), tap(res => this.setEmployees(res)));
   }
 
   public updateFilterParams(params: any): void {
@@ -76,6 +99,10 @@ export class EmployeesService {
 
   public changeStatus(active: boolean): void {
     this._requestForUpdate({...this.employeeInfo, active});
+  }
+
+  public addTrack(id, track): void {
+
   }
 
   private _requestForUpdate(employee: Employee): void {
@@ -89,7 +116,6 @@ export class EmployeesService {
 
   private _filter(res: Employee[]): Employee[] {
     let data: any = res;
-
     const shouldIncludeSearch = this.filterParams.searchTerm.length > 0;
 
     if (shouldIncludeSearch) {
@@ -113,11 +139,7 @@ export class EmployeesService {
       index: this.filterParams.offset / this.filterParams.limit,
     };
 
-    const modifiedData: any[] = data.slice(this.filterParams.offset, this.filterParams.offset + size + 1);
-    return modifiedData.map((emp: any, i) => ({
-      ...emp,
-      activities: [`${emp.guid.slice(0, 4)}-1`, `${emp.guid.slice(0, 4)}-2`, `${emp.guid.slice(0, 4)}-3`]
-    }));
+    return data.slice(this.filterParams.offset, this.filterParams.offset + size + 1);
   }
 
   private _showInfo(message: string): void {

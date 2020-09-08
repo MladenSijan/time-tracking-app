@@ -5,7 +5,6 @@ import {transform} from '../../../helpers';
 @Component({
   selector: 'app-date-range-picker',
   templateUrl: './date-range-picker.component.html',
-  styleUrls: ['./date-range-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateRangePickerComponent implements OnChanges {
@@ -50,7 +49,7 @@ export class DateRangePickerComponent implements OnChanges {
   @Input() hasTimePicker = true;
   @Input() from: string | Date = this.date;
   @Input() to: string | Date = this.date;
-  @Input() minDate: string | Date = new Date(2019, 0, 1);
+  @Input() minDate: string | Date = new Date(this.date.getFullYear(), 0, 1);
   @Input() maxDate: string | Date = new Date();
   @Output() rangeChanges: EventEmitter<any> = new EventEmitter();
 

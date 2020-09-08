@@ -5,7 +5,7 @@
         Name
       </mat-header-cell>
       <mat-cell class="cell cell--name" *matCellDef="let data">
-        {{data.active ? 'active' : 'inactive'}} {{data.activities | json}}
+        {{data.active ? 'active' : 'inactive'}} {{data._id}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">

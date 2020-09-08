@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {Subject} from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,8 @@ import {Subject} from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  previousMonth = moment().subtract(1, 'month').format('YYYY-MM-DD');
+
   destroy$ = new Subject<boolean>();
 
   constructor(

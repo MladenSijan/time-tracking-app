@@ -8,14 +8,17 @@
       </mat-select>
     </mat-form-field>
     <app-search class="mr-3" (valueChange)="onSearch($event)"></app-search>
-    <app-date-range-picker [hasTimePicker]="false" (rangeChanges)="onDateChange($event)"></app-date-range-picker>
+    <app-date-range-picker [from]="previousMonth"
+                           [hasTimePicker]="false"
+                           (rangeChanges)="onDateChange($event)">
+    </app-date-range-picker>
   </div>
 </header>
 <div class="d-flex align-items-start justify-content-between px-5">
-  <section class="mat-elevation-z3 section section--summary mr-3">
+  <section class="card section section--summary mr-3">
     <app-general-summary [summary]="dashboard.summaryInfo" appLoader="defaultPreset"></app-general-summary>
   </section>
-  <section class="mat-elevation-z3 section section--employees">
+  <section class="card section section--employees">
     <app-employees-container appLoader="defaultPreset"></app-employees-container>
   </section>
 </div>

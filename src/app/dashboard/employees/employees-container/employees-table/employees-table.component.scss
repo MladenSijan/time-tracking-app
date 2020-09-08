@@ -1,9 +1,14 @@
-.table {
+mat-table.table {
   z-index: 5;
   position: relative;
 
   .row {
+    height: 38px;
+    min-height: 38px;
+
     &--header {
+      height: 38px;
+      min-height: 38px;
     }
   }
 }

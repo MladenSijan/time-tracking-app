@@ -18,9 +18,11 @@ export class DashboardService {
 
   public getSummary(): void {
     this.loader.loading$.next(true);
-    this.employees.requestForEmployees().toPromise()
+
+    this.employees.getAll()
       .then(data => {
-        this.setSummaryInfo(data || []);
+        this.employees.setEmployees(data[0]);
+        this.setSummaryInfo(data[0] || []);
         this.loader.loading$.next(false);
       });
   }

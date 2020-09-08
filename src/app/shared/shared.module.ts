@@ -8,8 +8,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {LoaderDirective} from './loader/loader.directive';
 import {LoaderComponent} from './loader/loader.component';
 import {PlaceholderComponent} from './placeholder/placeholder.component';
+
 import {LoaderService} from './loader/loader.service';
-import {RequestsService} from './requests.service';
+import {DatabaseService, RequestsService} from '../services';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         LoaderService,
+        DatabaseService,
         RequestsService
       ]
     };

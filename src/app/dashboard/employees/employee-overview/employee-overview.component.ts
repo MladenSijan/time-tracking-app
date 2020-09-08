@@ -17,6 +17,10 @@ export class EmployeeOverviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onAddTrack(e) {
+    this.employees.addTrack('', '');
+  }
+
   onToggleStatus(e: MatSlideToggleChange): void {
     this.employees.changeStatus(e.checked);
   }
