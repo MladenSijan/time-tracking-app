@@ -8,7 +8,6 @@ import {LoaderDirective} from './loader/loader.directive';
 import {LoaderComponent} from './loader/loader.component';
 import {PlaceholderComponent} from './placeholder/placeholder.component';
 
-import {RequestsService} from '../services';
 import {LoaderService} from './loader/loader.service';
 
 @NgModule({
@@ -39,7 +38,6 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         LoaderService,
-        RequestsService,
       ]
     };
   }

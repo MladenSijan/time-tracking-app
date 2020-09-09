@@ -1,4 +1,4 @@
-import {Injectable, SkipSelf} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LoaderService} from '../../shared/loader/loader.service';
 import {DashboardServiceModule} from '../dashboard-service.module';
 import {Employee} from '../models/employee';
@@ -7,8 +7,8 @@ import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 import {PaginatorConfig} from './employees-container/paginator/paginator.component';
 import {NgxIndexedDBService} from 'ngx-indexed-db';
-import {RequestsService} from '../../services';
 import {environment} from '../../../environments/environment';
+import {generateActivitiesForUser} from '../../helpers';
 
 export interface FilterParams {
   to?: string;
@@ -25,13 +25,14 @@ const baseUrl = `${environment.apiUrl}/users`;
 export class EmployeesService {
   private employees: Employee[] = null;
   employeeInfo: Employee = {
-    totalClockedInTime: 2,
-    totalUnproductiveTime: 2,
+    totalClockedInTime: 0,
+    totalUnproductiveTime: 0,
     active: true,
-    id: 'u2313',
-    name: 'Client name',
-    productivityRatio: 0.4,
-    totalProductiveTime: 2
+    id: '',
+    name: '',
+    productivityRatio: 0,
+    totalProductiveTime: 0,
+    activities: []
   };
 
   employees$ = new Subject<Employee[]>();
@@ -56,7 +57,6 @@ export class EmployeesService {
     private http: HttpClient,
     private loader: LoaderService,
     private snackbar: MatSnackBar,
-    private requests: RequestsService
   ) {
   }
 
@@ -84,7 +84,9 @@ export class EmployeesService {
     this.employees = res.map((emp: any) => ({
       ...emp,
       active: Math.random() > 0.5,
+      activities: generateActivitiesForUser()
     }));
+
     this.employees$.next(this._filter(this.employees));
   }
 
@@ -94,20 +96,10 @@ export class EmployeesService {
   }
 
   public changeStatus(active: boolean): void {
-    this._requestForUpdate({...this.employeeInfo, active});
   }
 
   public addTrack(id, track): void {
 
-  }
-
-  private _requestForUpdate(employee: Employee): void {
-    this.requests.updateData(`/users/${employee.id}`, employee).toPromise()
-      .then(res => {
-        this.employeeInfo = {...employee};
-        this._showInfo('Update successful');
-      })
-      .catch(err => this._showInfo('Update failed: ' + err));
   }
 
   private _filter(res: Employee[]): Employee[] {
@@ -116,7 +108,7 @@ export class EmployeesService {
 
     if (shouldIncludeSearch) {
       data = data.filter(option => {
-        return (this.filterParams.active === option.active) && option.guid.toLowerCase().includes(this.filterParams.searchTerm);
+        return (this.filterParams.active === option.active) && option.name.toLowerCase().includes(this.filterParams.searchTerm);
       });
     } else {
       data = data.filter(option => {
@@ -140,5 +132,9 @@ export class EmployeesService {
 
   private _showInfo(message: string): void {
     this.snackbar.open(message, null, {duration: 1500});
+  }
+
+  getActivities() {
+    return generateActivitiesForUser();
   }
 }

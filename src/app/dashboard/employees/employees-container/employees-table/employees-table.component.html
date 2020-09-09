@@ -5,14 +5,22 @@
         Name
       </mat-header-cell>
       <mat-cell class="cell cell--name" *matCellDef="let data">
+        {{data.name}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell class="cell cell--status" *matHeaderCellDef>
+        Status
+      </mat-header-cell>
+      <mat-cell class="cell cell--status" *matCellDef="let data">
         {{data.active ? 'active' : 'inactive'}} {{data._id}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <mat-header-cell class="header-cell dc-table__cell--actions" *matHeaderCellDef>
+      <mat-header-cell class="header-cell cell--actions justify-content-end" *matHeaderCellDef>
         Actions
       </mat-header-cell>
-      <mat-cell class="cell cell--actions justify-content-center" *matCellDef="let data">
+      <mat-cell class="cell cell--actions justify-content-end" *matCellDef="let data">
         <button mat-button (click)="onRowSelect()">
           View
         </button>

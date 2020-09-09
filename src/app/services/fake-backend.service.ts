@@ -10,7 +10,7 @@ import {
 import {Observable, of, throwError} from 'rxjs';
 import {delay, materialize, dematerialize, mergeMap} from 'rxjs/operators';
 
-import {AlertService, DatabaseService} from './index';
+import {DatabaseService} from './index';
 import {Role} from '../models';
 
 const accountsKey = 'accounts';
@@ -21,15 +21,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   constructor(
     private http: HttpClient,
     private db: DatabaseService,
-    private alertService: AlertService
   ) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const {url, method, headers, body} = request;
-    const alertService = this.alertService;
     const db = this.db;
-    const http = this.http;
 
     return handleRoute();
 
@@ -121,18 +118,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function register() {
       const account = body;
-
       if (accounts.find(x => x.email === account.email)) {
         // display email already registered "email" in alert
-        setTimeout(() => {
-          alertService.info(`
-                        <h4>Email Already Registered</h4>
-                        <p>Your email ${account.email} is already registered.</p>
-                        <p>If you don't know your password please visit the <a href="${location.origin}/account/forgot-password">forgot password</a> page.</p>
-                        <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. A real backend would send a real email.</div>
-                    `, {autoClose: false});
-        }, 1000);
-
         // always return ok() response to prevent email enumeration
         return ok();
       }
@@ -146,18 +133,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       delete account.confirmPassword;
       accounts.push(account);
       localStorage.setItem(accountsKey, JSON.stringify(accounts));
-
-      // display verification email in alert
-      setTimeout(() => {
-        const verifyUrl = `${location.origin}/account/verify-email?token=${account.verificationToken}`;
-        alertService.info(`
-                    <h4>Verification Email</h4>
-                    <p>Thanks for registering!</p>
-                    <p>Please click the below link to verify your email address:</p>
-                    <p><a href="${verifyUrl}">${verifyUrl}</a></p>
-                    <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. A real backend would send a real email.</div>
-                `, {autoClose: false});
-      }, 1000);
 
       return ok();
     }

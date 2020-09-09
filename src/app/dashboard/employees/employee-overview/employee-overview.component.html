@@ -5,7 +5,7 @@
       <div class="d-flex flex-column align-items-start justify-content-start mr-5" style="min-width: 500px">
         <div class="card p-3 w-100 mb-5" style="min-width: 350px;">
           <div class="d-flex align-items-baseline justify-content-between">
-            <h2 class="mb-4">{{employees.employeeInfo.name}}</h2>
+            <h2 class="mb-4">{{employees.employeeInfo.name || 'Employee name'}}</h2>
             <mat-slide-toggle [checked]="employees.employeeInfo?.active" (change)="onToggleStatus($event)">
               {{employees.employeeInfo?.active ? 'Active' : 'Inactive'}}
             </mat-slide-toggle>

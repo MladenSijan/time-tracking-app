@@ -15,7 +15,7 @@ export class ActivityGraphComponent implements OnInit {
   dates = [];
 
   public barChartOptions: ChartOptions = null;
-  public barChartLabels: Label[] = []; // should be resolved dynamically
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartColors: Color[] = [
@@ -28,8 +28,6 @@ export class ActivityGraphComponent implements OnInit {
   @Input('data') set setData(data) {
     const sorted = sortArray([...data].map(d => d.from));
     this.data = data;
-
-    console.log(this.data);
 
     this.barChartData = [
       {data: [...this.data].map(d => d.productiveTime), stack: 'a', label: 'Productive'},

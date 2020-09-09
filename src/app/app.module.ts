@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, ModuleWithProviders, NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,7 +12,7 @@ import {AppComponent} from './app.component';
 import {dbConfig} from './config/db-config';
 import {NgxIndexedDBModule} from 'ngx-indexed-db';
 import {SharedModule} from './shared/shared.module';
-import {AccountService, AlertService, DatabaseService} from './services';
+import {AccountService, DatabaseService} from './services';
 import {appInitializer, ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './helpers';
 
 @NgModule({
@@ -30,7 +30,6 @@ import {appInitializer, ErrorInterceptor, fakeBackendProvider, JwtInterceptor} f
     AppRoutingModule,
   ],
   providers: [
-    AlertService,
     AccountService,
     DatabaseService,
 

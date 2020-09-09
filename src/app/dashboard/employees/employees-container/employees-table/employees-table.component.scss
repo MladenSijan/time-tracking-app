@@ -9,6 +9,12 @@ mat-table.table {
     &--header {
       height: 38px;
       min-height: 38px;
+
+      .cell {
+        &--actions {
+          padding-right: 2.125rem;
+        }
+      }
     }
   }
 }

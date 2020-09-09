@@ -8,10 +8,11 @@ export const dbConfig: DBConfig = {
       store: 'employees',
       storeConfig: {keyPath: 'id', autoIncrement: true},
       storeSchema: [
-        {name: 'guid', keypath: 'guid', options: {unique: false}},
+        {name: 'id', keypath: 'id', options: {unique: false}},
         {name: 'name', keypath: 'name', options: {unique: false}},
         {name: 'email', keypath: 'email', options: {unique: false}},
         {name: 'active', keypath: 'active', options: {unique: false}},
+        {name: 'activities', keypath: 'activities', options: {unique: false}},
       ]
     }
   ]

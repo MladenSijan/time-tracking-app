@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeesTableComponent {
-  displayedColumns = ['name', 'actions'];
+  displayedColumns = ['name', 'status', 'actions'];
   @Input() employees: Employee[] = null;
 
   constructor(

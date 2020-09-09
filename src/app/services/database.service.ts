@@ -24,7 +24,7 @@ export class DatabaseService {
           return of(data[0]);
         } else {
           return this.http.get('/assets/generated.json')
-            .pipe(tap((res) => this.db.add('employees', res)));
+            .pipe(tap((res: any[]) => this.db.add('employees', res)));
         }
       }),
       catchError(err => throwError(err))

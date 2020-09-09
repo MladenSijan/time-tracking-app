@@ -4,7 +4,6 @@ import {EmployeesService} from '../employees.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 import {MatSelectChange} from '@angular/material/select';
-import {randomDate} from '../../../helpers';
 
 @Component({
   selector: 'app-employee-overview',
@@ -34,49 +33,7 @@ export class EmployeeOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activities = this.getActivities().map(act => {
-      // delete act.to;
-      return {...act};
-    });
-    // console.log(getRanges(res, '2020-06-01', '2020-09-03'));
-  }
-
-  getActivities() {
-    const a = [];
-    for (let i = 0; i < 75; i++) {
-      const startMonth = Math.floor(Math.random() * (6 - 1) + 1);
-      const endMonth = Math.floor(Math.random() * (10 - (startMonth - 1)) + (startMonth - 1));
-
-      const start = Math.floor(Math.random() * (28 - 1) + 1);
-      const end = Math.floor(Math.random() * (28 - (start - 1)) + (start - 1));
-
-      const formattedStart = moment().month(startMonth).date(start).toDate();
-      const formattedEnd = moment().month(endMonth).date(end).toDate();
-
-      const randomDateFromRange = randomDate(formattedStart, formattedEnd);
-
-      const clockedIn = Math.floor(Math.random() * (24 - 10) + 10);
-      const clockedOut = Math.floor(Math.random() * (24 - clockedIn) + clockedIn);
-
-      const total = clockedOut - clockedIn;
-
-      const productive = Math.floor(Math.random() * (total - 1) + 1);
-
-      const left = total - productive;
-      const unproductive = Math.floor(Math.random() * (left - 1) + 1);
-
-      a.push({
-        clockedIn: moment().hours(clockedIn).format('LT'),
-        clockedOut: moment().hours(clockedOut).format('LT'),
-        productiveTime: productive,
-        unproductiveTime: unproductive,
-        neutral: total - (unproductive + productive),
-        date: randomDateFromRange,
-        // to: randomDate(moment(from).toDate(), moment().toDate()),
-      });
-    }
-
-    return a;
+    this.activities = this.employees.getActivities();
   }
 
   onAddTrack() {

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {passwordRegex} from '../../helpers';
-import {AccountService, AlertService} from '../../services';
+import {AccountService} from '../../services';
 import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -21,7 +21,6 @@ export class RegisterComponent {
     private router: Router,
     private toast: MatSnackBar,
     private route: ActivatedRoute,
-    private alertService: AlertService,
     private accountService: AccountService
   ) {
   }
@@ -33,9 +32,9 @@ export class RegisterComponent {
       this.accountService.register(this.register.value)
         .pipe(first())
         .subscribe(() => {
-          this.alertService.success('Registration successful', {keepAfterRouteChange: true});
+          this.showInfo('Registration successful');
           this.router.navigate(['../login'], {relativeTo: this.route});
-        }, error => this.alertService.error(error));
+        }, error => this.showInfo(error));
     }
   }
 
