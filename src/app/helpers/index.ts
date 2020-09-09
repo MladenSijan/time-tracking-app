@@ -1,3 +1,4 @@
+export * from './date-range';
 export * from './date-adapter';
 export * from './app-validators';
 export * from './app.initializer';

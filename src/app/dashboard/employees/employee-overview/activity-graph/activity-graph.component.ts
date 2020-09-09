@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Label} from 'ng2-charts';
+import {Color, Label} from 'ng2-charts';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import * as moment from 'moment';
+import {sortArray} from '../../../../helpers';
 
 @Component({
   selector: 'app-activity-graph',
@@ -13,46 +14,56 @@ export class ActivityGraphComponent implements OnInit {
   @Input() data: any = null;
   dates = [];
 
-  public barChartOptions: ChartOptions = {
-    responsive: true,
-    scales: {
-      xAxes: [
-        {
-          type: 'time',
-          ticks: {
-            min: '2020-09-01',
-            max: '2020-09-26'
-          }
-        }
-      ]
-    },
-    legend: {
-      align: 'center',
-      labels: {
-
-      }
-    },
-    tooltips: {
-      custom: (d) => {}
-    }
-  };
+  public barChartOptions: ChartOptions = null;
   public barChartLabels: Label[] = []; // should be resolved dynamically
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
-
-  public barChartData: ChartDataSets[] = [
-    {data: [2, 5, 5, 6, 7, 6, 8], stack: 'a', label: 'Productive'},
-    {data: [4, 7, 2, 1, 4, 2, 1], stack: 'a', label: 'Unproductive'},
-    {data: [4, 0, 1, 2, 1, 1, 0], stack: 'a', label: 'Neutral'},
+  public barChartColors: Color[] = [
+    {backgroundColor: '#17cfcf'},
+    {backgroundColor: '#ff506d'},
+    {backgroundColor: '#a29bfe'},
   ];
+  public barChartData: ChartDataSets[] = [];
+
+  @Input('data') set setData(data) {
+    const sorted = sortArray([...data].map(d => d.from));
+    this.data = data;
+
+    console.log(this.data);
+
+    this.barChartData = [
+      {data: [...this.data].map(d => d.productiveTime), stack: 'a', label: 'Productive'},
+      {data: [...this.data].map(d => d.unproductiveTime), stack: 'a', label: 'Unproductive'},
+      {data: [...this.data].map(d => d.neutral), stack: 'a', label: 'Neutral'},
+    ];
+
+    this.barChartOptions = {
+      responsive: true,
+      scales: {
+        xAxes: [
+          {
+            type: 'time',
+            ticks: {
+              min: sorted[0],
+              max: sorted[sorted.length - 1]
+            }
+          }
+        ]
+      },
+      legend: {align: 'center'},
+      tooltips: {
+        custom: (d) => {
+        }
+      },
+    };
+
+    this.barChartLabels = this.data.map((activity, i) => moment(activity.from).add(i, 'days').format('ll'));
+  }
 
   constructor() {
-    for (let i = 0; i < 25; i++) {
-      this.dates.push(moment('2020-09-01').add(i, 'days').format('ll'));
-    }
+
   }
 
   ngOnInit(): void {
-    this.barChartLabels = [...this.dates];
   }
 }

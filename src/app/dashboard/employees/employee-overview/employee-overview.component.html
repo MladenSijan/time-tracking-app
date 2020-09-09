@@ -29,7 +29,9 @@
             </div>
             <div class="d-flex justify-content-between">
               <mat-form-field class="time-picker">
-                <input [ngxTimepicker]="toggleIconIn" placeholder="Clocked in time" readonly matInput>
+                <input [max]="maxClockedIn"
+                       [ngxTimepicker]="toggleIconIn"
+                       placeholder="Clocked in time" readonly matInput>
                 <ngx-material-timepicker-toggle [for]="toggleIconIn" matSuffix>
                   <button ngxMaterialTimepickerToggleIcon
                           mat-icon-button matTooltip="Pick a time">
@@ -37,13 +39,17 @@
                   </button>
                 </ngx-material-timepicker-toggle>
               </mat-form-field>
-              <ngx-material-timepicker (timeSet)="onClockedInSet($event)"
+              <ngx-material-timepicker [defaultTime]="now"
+                                       (timeSet)="onClockedInSet($event)"
+                                       (timeChanged)="onClockedInChange($event)"
                                        (hourSelected)="onClockedInChange($event)"
                                        #toggleIconIn style="position: absolute;">
               </ngx-material-timepicker>
 
               <mat-form-field class="time-picker">
-                <input [ngxTimepicker]="toggleIconOut" placeholder="Clocked out time" readonly matInput>
+                <input [min]="minClockedOut"
+                       [ngxTimepicker]="toggleIconOut"
+                       placeholder="Clocked out time" readonly matInput>
                 <ngx-material-timepicker-toggle [for]="toggleIconOut" matSuffix>
                   <button ngxMaterialTimepickerToggleIcon
                           mat-icon-button matTooltip="Pick a time">
@@ -80,7 +86,7 @@
     </ng-container>
     <div class="d-flex justify-content-center">
       <div class="card p-3" style="min-width: 750px; width: 70%;">
-        <app-activity-graph [data]="null"></app-activity-graph>
+        <app-activity-graph [data]="activities"></app-activity-graph>
       </div>
     </div>
   </div>
