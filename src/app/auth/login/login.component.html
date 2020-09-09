@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="card mb-3" [formGroup]="login">
+    <div class="mb-5">
+      <img src="/assets/img/logo.svg" alt="logo"> Time tracker
+    </div>
+    <div (keyup.enter)="onSubmit()" class="d-flex flex-column align-items-center">
+      <mat-form-field class="mb-3">
+        <input matInput formControlName="email" placeholder="Email" type="email" spellcheck="false">
+      </mat-form-field>
+      <mat-form-field class="mb-3">
+        <input matInput formControlName="password" spellcheck="false"
+               placeholder="Password" [type]="isVisible ? 'text' : 'password'">
+        <button mat-icon-button matSuffix (click)="isVisible = !isVisible">
+          <mat-icon> {{isVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <footer>
+      <div class="mb-5 text-right">
+        <a class="link" routerLink="/register">Register</a>
+      </div>
+      <button mat-stroked-button color="accent" (click)="onSubmit()">
+        Log in
+      </button>
+    </footer>
+  </div>
+</div>

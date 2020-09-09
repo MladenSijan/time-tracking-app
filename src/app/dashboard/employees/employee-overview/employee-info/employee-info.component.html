@@ -1,0 +1,16 @@
+<ng-container *ngIf="employee">
+  <div class="content">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <strong>Total clocked in time:</strong> {{employee.totalClockedInTime}}h
+    </div>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <strong>Total productive time:</strong> {{employee.totalProductiveTime}}h
+    </div>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <strong>Total unproductive time:</strong> {{employee.totalUnproductiveTime}}h
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <strong>Productivity ratio:</strong> {{employee.productivityRatio}}
+    </div>
+  </div>
+</ng-container>

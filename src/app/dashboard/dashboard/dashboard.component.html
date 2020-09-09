@@ -1,0 +1,24 @@
+<header class="d-flex align-items-baseline justify-content-between mb-3 px-5">
+  <h1 class="title">Dashboard</h1>
+  <div class="d-flex align-items-baseline">
+    <mat-form-field class="mr-3" style="width: 85px;">
+      <mat-select [value]="true" (valueChange)="onStatusChange($event)">
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <app-search class="mr-3" (valueChange)="onSearch($event)"></app-search>
+    <app-date-range-picker [from]="previousMonth"
+                           [hasTimePicker]="false"
+                           (rangeChanges)="onDateChange($event)">
+    </app-date-range-picker>
+  </div>
+</header>
+<div class="d-flex align-items-start justify-content-between px-5">
+  <section class="card section section--summary mr-3">
+    <app-general-summary [summary]="dashboard.summaryInfo" appLoader="defaultPreset"></app-general-summary>
+  </section>
+  <section class="card section section--employees">
+    <app-employees-container appLoader="defaultPreset"></app-employees-container>
+  </section>
+</div>

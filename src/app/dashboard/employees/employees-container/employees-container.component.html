@@ -1,0 +1,9 @@
+<div style="position: relative;">
+  <div class="d-flex align-items-baseline justify-content-between">
+    <h3 class="title">Employees</h3>
+    <app-paginator [config]="employees.paginatorConfig" (pageChange)="onPageChange($event)"></app-paginator>
+  </div>
+  <div style="height: 700px; overflow: auto;">
+    <app-employees-table [employees]="(employees.employees$ | async)"></app-employees-table>
+  </div>
+</div>

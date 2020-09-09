@@ -1,0 +1,4 @@
+.card {
+  border-radius: 7px;
+  @include mat-elevation($zValue: 4, $opacity: 0.5);
+}

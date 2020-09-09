@@ -1,0 +1,535 @@
+[
+  {
+    "id": "5f583ab270b32a218f597973",
+    "active": false,
+    "name": "Frederick Jacobson",
+    "email": "frederickjacobson@steelfab.com",
+    "activities": [
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-29"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-29"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-23"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-06"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-12"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-07"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-23"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-02"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-15"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-05"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-28"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-20"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-13"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-09-08"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-08-10"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-05"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-15"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-07"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-24"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-10-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-13"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-24"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-04"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-28"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-03"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-04"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-09"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-09"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-29"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-04"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-20"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-02"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-08-03"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-05"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-03"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-23"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-01"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-02"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-03-31"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-18"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-25"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-22"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-20"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-01-23"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-24"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-26"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-17"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-01"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-11"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-02-29"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-01"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-26"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-05-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-20"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-06-14"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-09"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-10"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-13"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-04-27"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-07-02"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-08-16"
+      },
+      {
+        "clockedIn": "9:18 am",
+        "clockedOut": "5:15pm",
+        "productiveTime": 2,
+        "unproductiveTime": 3,
+        "from": "2020-01-29"
+      }
+    ]
+  }
+]

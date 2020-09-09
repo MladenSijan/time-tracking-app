@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="card mb-3" [formGroup]="register">
+    <div class="mb-5">
+      <img src="/assets/img/logo.svg" alt="logo"> Time tracker
+    </div>
+    <mat-form-field class="mb-3">
+      <input matInput formControlName="email" placeholder="Email" type="email" spellcheck="false">
+    </mat-form-field>
+    <mat-form-field class="mb-3">
+      <input matInput formControlName="password" placeholder="Password" spellcheck="false">
+    </mat-form-field>
+    <footer>
+      <div class="mb-5 text-right">
+        <a class="link" routerLink="/login">Login</a>
+      </div>
+      <button mat-stroked-button color="accent" (click)="onSubmit()">
+        Register
+      </button>
+    </footer>
+  </div>
+</div>

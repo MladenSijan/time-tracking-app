@@ -1,0 +1,21 @@
+<section class="section">
+  <h3 class="title mb-3 p-3">
+    Employees productivity summary
+  </h3>
+  <ng-container *ngIf="summary">
+    <div class="content px-3">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <strong>Total number of employees:</strong> {{summary.total}}
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <strong>Clocked in time:</strong> {{summary.clockedInTime}}h
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <strong>Productive time:</strong> {{summary.productiveTime}}h
+      </div>
+      <div class="d-flex align-items-center justify-content-between">
+        <strong>Unproductive time:</strong> {{summary.unproductiveTime}}h
+      </div>
+    </div>
+  </ng-container>
+</section>

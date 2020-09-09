@@ -1,0 +1,17 @@
+.title {
+  margin-bottom: 0;
+  line-height: 60px;
+}
+
+.section {
+  overflow: hidden;
+
+  &--summary {
+    min-width: 400px;
+    min-height: 230px;
+  }
+
+  &--employees {
+    width: 70%;
+  }
+}

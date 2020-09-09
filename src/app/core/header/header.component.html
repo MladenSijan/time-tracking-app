@@ -1,0 +1,22 @@
+<header class="d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mr-5">
+      <img class="mr-3" src="/assets/img/logo.svg" alt="logo" width="auto" height="30">
+      <h1>Time tracker</h1>
+    </div>
+    <nav>
+      <button mat-button routerLink
+              routerLinkActive #rla="routerLinkActive"
+              [routerLinkActiveOptions]="{exact: true}"
+              [color]="rla.isActive ? 'primary' : null">
+        <mat-icon [color]="rla.isActive ? 'primary' : null">dashboard</mat-icon>
+        Dashboard
+      </button>
+    </nav>
+  </div>
+  <div>
+    <button mat-button (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+</header>
